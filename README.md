@@ -1,33 +1,255 @@
-This project has been developed using the concepts of reinforcement learning to predict the rocket's movement. the rocket moves against a few constraints such as Thrust, Rotation and weight of the rocket. The reinforcement learning approach is based on the reward basis. Rewards have been allocated based on each action performed by the rocket
+# 🚀 Rocket Landing using Reinforcement Learning (DQN)
 
-1. Actions
-In the rocket simulation, the rocket deals with 6 actions such as,
+## 📌 Project Overview
 
-Move upward
-Move downward
-Move left
-Move right
-Rotate clockwise
-Rotate counterclockwise
-2. Crashed events
-Here rocket moves within the range of width=800 and height=600 environment. If the rocket is out of the region then we consider the rocket has crashed.
+This project implements an intelligent rocket landing system using Deep Reinforcement Learning (DQN). The agent learns to control the rocket's movement such as thrust, rotation, and direction to achieve a safe landing.
 
-If the angle of the spinning of the rocket exceeds more than 90 degrees then we consider the rocket has crashed.
+The system uses a reward-based learning mechanism where the agent improves its performance over time by interacting with the environment.
 
-3. Landed events
-To be landed safely the rocket should landed within the range of the window.
+---
 
-The rocket should maintain an angle not exceeding 45 degrees with the rocket axis
+## 🚀 Features
 
-4. Reward Function
-In this model has been developed using the DQN reinforcement learning approach and the rewards have been allocated based on each action taken by the rocket. There is a dynamic allocating system to maintain the rocket by avoiding rotating and encouraging the rocket to keep a stable position.
+* 🧠 Reinforcement Learning based control system
+* 🎮 Interactive simulation using Pygame
+* 📊 Real-time learning and training
+* ⚡ Deep Q-Network (DQN) implementation
+* 🎯 Autonomous rocket landing
+* 📉 Reward & loss visualization
 
-If the rocket is out of the region then provide a -20 reward
-If the rocket is spinning then allocate a -10 reward
-If the rocket lands clos to the center of the width it gets highest reward like wise based on the position the rocket learns the next action( Bellman equation)
-Required libraries
+---
 
-1. Numpy
-2. Torch
-3. PyGame
-4. GYM
+## 🧠 Reinforcement Learning Concepts
+
+### 1. Agent & Environment
+
+* **Agent** → Rocket
+* **Environment** → Simulation world
+
+---
+
+### 2. State
+
+The state includes:
+
+* Position (x, y)
+* Velocity (vx, vy)
+* Angle
+* Angular velocity
+* Fuel level
+
+Defined in:
+📄 
+
+---
+
+### 3. Actions
+
+The agent can perform:
+
+* Rotate left
+* Rotate right
+* Move left
+* Move right
+
+---
+
+### 4. Reward Function
+
+The reward system guides learning:
+
+* ✅ Safe landing → High reward (up to +100)
+* ❌ Crash → Negative reward (-20)
+* 🔄 Excess rotation → Penalty
+* ⛽ Fuel usage → Penalty
+
+---
+
+### 5. Q-Learning
+
+The agent learns using the Q-value update rule:
+
+Bellman Equation:
+
+```
+Q(s,a) = r + γ * max Q(s', a')
+```
+
+---
+
+### 6. Deep Q-Network (DQN)
+
+A neural network is used to approximate Q-values.
+
+Implemented in:
+📄 
+
+---
+
+### 7. Dueling DQN
+
+The model separates:
+
+* Value function
+* Advantage function
+
+This improves stability and performance.
+
+---
+
+### 8. Experience Replay
+
+The agent stores past experiences and learns from them randomly.
+
+Implemented in:
+📄 
+
+---
+
+### 9. Target Network
+
+A separate target network stabilizes training.
+
+---
+
+### 10. Exploration vs Exploitation
+
+* Random actions (exploration)
+* Best actions (exploitation)
+
+Controlled by epsilon decay.
+
+---
+
+## ⚙️ Tech Stack
+
+* Python 🐍
+* PyTorch 🔥
+* NumPy 📊
+* Pygame 🎮
+* Matplotlib 📈
+
+---
+
+## 📂 Project Structure
+
+```id="2y1ymq"
+rocket_rl/
+│
+├── Rocket.py
+├── simulation.py
+├── DQN.py
+├── DQN_Agent.py
+├── plot_results.py
+├── rocket_model.pth
+├── README.md
+```
+
+---
+
+## ▶️ How to Run
+
+### 1️⃣ Install Dependencies
+
+```bash id="4lnbhi"
+pip install pygame torch numpy matplotlib
+```
+
+---
+
+### 2️⃣ Run Simulation
+
+```bash id="iwsnhq"
+python simulation.py
+```
+
+---
+
+## 🎮 Simulation Details
+
+The rocket operates in a constrained environment:
+
+* Screen size: 800x600
+* Gravity applied
+* Wind disturbances included
+* Fuel-based thrust system
+
+Defined in:
+📄 
+
+---
+
+## 📊 Training
+
+The agent learns by:
+
+1. Observing state
+2. Taking action
+3. Receiving reward
+4. Updating Q-values
+
+Training handled in:
+📄 
+
+---
+
+## 📈 Visualization
+
+Training performance can be visualized using:
+📄 
+
+* Episode rewards
+* Loss curve
+
+---
+
+## 💡 Key Techniques Used
+
+* Deep Q-Network (DQN)
+* Dueling Architecture
+* Experience Replay
+* Target Network
+* Reward Engineering
+* Epsilon-Greedy Strategy
+
+---
+
+## 🎓 Viva Questions
+
+### Q1: What is Reinforcement Learning?
+
+👉 Learning through interaction using rewards
+
+### Q2: What is DQN?
+
+👉 Neural network-based Q-learning
+
+### Q3: Why use Experience Replay?
+
+👉 To break correlation and stabilize training
+
+### Q4: What is Bellman Equation?
+
+👉 Core equation for updating Q-values
+
+---
+
+## 🏁 Conclusion
+
+This project demonstrates:
+
+* Advanced AI control using RL
+* Real-time simulation
+* Autonomous decision-making
+
+---
+
+## 👨‍💻 Author
+
+**Ayush Kumar**
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
